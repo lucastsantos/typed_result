@@ -9,12 +9,12 @@ void main() {
       expect((result as Ok).value, 1);
     });
 
-    test('should return error when block throws Exception', () {
-      var result = runCatching(() => throw Exception("a"));
+    test('should return failure when block throws Exception', () {
+      var result = runCatching(() => throw Exception());
       expect(result.runtimeType, Err<Object>);
     });
 
-    test('should return error when block throws Error', () {
+    test('should return failure when block throws Error', () {
       var result = runCatching(() => throw Error());
       expect(result.runtimeType, Err<Object>);
     });

@@ -3,7 +3,7 @@ import 'package:typed_result/typed_result.dart';
 
 void main() {
   group('onSuccess', () {
-    test('callback should be called when its success', () {
+    test('callback should be called when it is success', () {
       int value = 0;
       const Ok("").onSuccess((_) {
         value += 1;
@@ -11,7 +11,7 @@ void main() {
       expect(value, 1);
     });
 
-    test('callback should not be called when its an error', () {
+    test('callback should not be called when it is failure', () {
       int value = 0;
       const Err("").onSuccess((_) {
         value += 1;
@@ -21,7 +21,7 @@ void main() {
   });
 
   group('onFailure', () {
-    test('callback should not be called when its success', () {
+    test('callback should not be called when it is success', () {
       int value = 0;
       const Ok("").onFailure((_) {
         value += 1;
@@ -29,7 +29,7 @@ void main() {
       expect(value, 0);
     });
 
-    test('callback should be called when its an error', () {
+    test('callback should be called when it is failure', () {
       int value = 0;
       const Err("").onFailure((_) {
         value += 1;
