@@ -22,4 +22,14 @@ extension Map<T, E> on Result<T, E> {
       return result as Ok<T>;
     }
   }
+
+  /// Map a [Result]<T, E> to a [Result]<U, F>
+  Result<U, F> mapBoth<U, F>({required U Function(T) success, required F Function(E) error}) {
+    var result = this;
+    if(result is Ok<T>) {
+      return Ok<U>(success(result.value));
+    } else {
+      return Err<F>(error((result as Err<E>).error));
+    }
+  }
 }

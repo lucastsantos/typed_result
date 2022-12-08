@@ -29,4 +29,24 @@ void main() {
       expect((result as Err).error, 1);
     });
   });
+
+  group('mapBoth', () {
+    test('should map with success block when its success', () {
+      var result = const Ok(1).mapBoth(
+        success: (e) => "a",
+        error: (e) => 0,
+      );
+      expect(result.runtimeType, Ok<String>);
+      expect((result as Ok).value, "a");
+    });
+
+    test('should map with error block when its an error', () {
+      var result = const Err(1).mapBoth(
+        success: (e) => "a",
+        error: (e) => 0,
+      );
+      expect(result.runtimeType, Err<int>);
+      expect((result as Err).error, 0);
+    });
+  });
 }
