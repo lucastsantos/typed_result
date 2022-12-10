@@ -3,18 +3,18 @@ import '../type/ok.dart';
 import '../type/result.dart';
 
 extension On<T, E> on Result<T, E> {
-  Result<T, E> onSuccess(void Function(T) callback) {
+  Result<T, E> onSuccess(void Function(T) block) {
     var result = this;
     if (result is Ok<T>) {
-      callback(result.value);
+      block(result.value);
     }
     return this;
   }
 
-  Result<T, E> onFailure(void Function(E) callback) {
+  Result<T, E> onFailure(void Function(E) block) {
     var result = this;
     if (result is Err<E>) {
-      callback(result.error);
+      block(result.error);
     }
     return this;
   }

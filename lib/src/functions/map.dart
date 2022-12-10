@@ -24,7 +24,8 @@ extension Map<T, E> on Result<T, E> {
   }
 
   /// Map a [Result]<T, E> to a [Result]<U, F>
-  Result<U, F> mapBoth<U, F>({required U Function(T) success, required F Function(E) failure}) {
+  Result<U, F> mapBoth<U, F>(
+      {required U Function(T) success, required F Function(E) failure}) {
     var result = this;
     if (result is Ok<T>) {
       return Ok<U>(success(result.value));

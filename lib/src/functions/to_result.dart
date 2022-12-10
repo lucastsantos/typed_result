@@ -8,7 +8,7 @@ extension ObjectToResult<T> on T? {
   /// If not, then creates an [Err]<E> using [provider] callback.
   Result<T, E> toResultOr<E>(E Function() provider) {
     var object = this;
-    if (object is T) {
+    if (object is T && T != Null) {
       return Ok<T>(object);
     } else {
       return Err<E>(provider());
