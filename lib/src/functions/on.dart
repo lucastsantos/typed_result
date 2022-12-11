@@ -3,7 +3,7 @@ import '../type/ok.dart';
 import '../type/result.dart';
 
 extension On<T, E> on Result<T, E> {
-  Result<T, E> onSuccess(void Function(T) block) {
+  Result<T, E> onSuccess(void Function(T value) block) {
     var result = this;
     if (result is Ok<T>) {
       block(result.value);
@@ -11,7 +11,7 @@ extension On<T, E> on Result<T, E> {
     return this;
   }
 
-  Result<T, E> onFailure(void Function(E) block) {
+  Result<T, E> onFailure(void Function(E error) block) {
     var result = this;
     if (result is Err<E>) {
       block(result.error);

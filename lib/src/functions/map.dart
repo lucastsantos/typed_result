@@ -4,7 +4,7 @@ import '../type/result.dart';
 
 extension Map<T, E> on Result<T, E> {
   /// Map a [Result]<T, E> to a [Result]<U, E>
-  Result<U, E> map<U>(U Function(T) transform) {
+  Result<U, E> map<U>(U Function(T value) transform) {
     var result = this;
     if (result is Ok<T>) {
       return Ok<U>(transform(result.value));
@@ -14,7 +14,7 @@ extension Map<T, E> on Result<T, E> {
   }
 
   /// Map a [Result]<T, E> to a [Result]<T, F>
-  Result<T, F> mapError<F>(F Function(E) transform) {
+  Result<T, F> mapError<F>(F Function(E error) transform) {
     var result = this;
     if (result is Err<E>) {
       return Err<F>(transform(result.error));
@@ -24,8 +24,7 @@ extension Map<T, E> on Result<T, E> {
   }
 
   /// Map a [Result]<T, E> to a [Result]<U, F>
-  Result<U, F> mapBoth<U, F>(
-      {required U Function(T) success, required F Function(E) failure}) {
+  Result<U, F> mapBoth<U, F>({required U Function(T value) success, required F Function(E error) failure}) {
     var result = this;
     if (result is Ok<T>) {
       return Ok<U>(success(result.value));

@@ -21,9 +21,10 @@ An `Result<T, E>` can't be instantiated directly.
 To create a `Result`, simply create an instance of `Ok<T>` or `Err<E>`.
 
 ```dart
-var ok = Ok(1); // as Ok<int>
-var error = Err(""); // as Err<String>
-Result<int, String> result = Ok(1); // as Result<int, *>
+var result = Ok(1); // as Ok<int>
+var result = Err(""); // as Err<String>
+Result<int, String> result = Ok(1); // as Result<int, *>, where * can be defined with any type
+Result<int, String> result = Err(""); // as Result<*, String>, where * can be defined with any type
 
 // As a return of a function
 Result<int, String> getData() {
