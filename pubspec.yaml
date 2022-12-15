@@ -1,7 +1,7 @@
 name: typed_result
 description: A result monad with two subtypes representing a success or a failure
 repository: https://github.com/lucastsantos/typed_result
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
