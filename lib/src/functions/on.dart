@@ -2,7 +2,7 @@ import '../type/err.dart';
 import '../type/ok.dart';
 import '../type/result.dart';
 
-extension On<T, E> on Result<T, E> {
+extension OnResult<T, E> on Result<T, E> {
   Result<T, E> onSuccess(void Function(T value) block) {
     var result = this;
     if (result is Ok<T>) {

@@ -49,4 +49,9 @@ void main() {
       expect((result as Err).error, 0);
     });
   });
+
+  test('Map extension name should not conflict with Dart Map', () {
+    Result<Map<String, String>, Never> result = const Ok(0).map((value) => {});
+    expect(result.runtimeType, Ok<Map<String, String>>);
+  });
 }
