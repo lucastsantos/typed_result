@@ -2,7 +2,7 @@ import '../type/err.dart';
 import '../type/ok.dart';
 import '../type/result.dart';
 
-extension Get<T, E> on Result<T, E> {
+extension GetResult<T, E> on Result<T, E> {
   T? get() {
     var result = this;
     return result is Ok<T> ? result.value : null;

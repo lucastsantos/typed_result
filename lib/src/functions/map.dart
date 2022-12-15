@@ -2,7 +2,7 @@ import '../type/err.dart';
 import '../type/ok.dart';
 import '../type/result.dart';
 
-extension Map<T, E> on Result<T, E> {
+extension MapResult<T, E> on Result<T, E> {
   /// Map a [Result]<T, E> to a [Result]<U, E>
   Result<U, E> map<U>(U Function(T value) transform) {
     var result = this;
