@@ -62,10 +62,14 @@ void main() {
 
   "\n`map`".log();
   getDate(false).map((_) => "Mapping success").log();
-  getDate(true).map((_) => "Nothing happens; still an instance of DateException").log();
+  getDate(true)
+      .map((_) => "Nothing happens; still an instance of DateException")
+      .log();
 
   "\n`mapError`".log();
-  getDate(false).mapError((_) => "Nothing happens; still an instance of DateTime").log();
+  getDate(false)
+      .mapError((_) => "Nothing happens; still an instance of DateTime")
+      .log();
   getDate(true).mapError((_) => "Mapping error").log();
 
   "\n`mapBoth`".log();
@@ -89,6 +93,16 @@ void main() {
   getDate(true)
       .onSuccess((_) => "Nothing happens".log())
       .onFailure((_) => "On Failure".log());
+
+  "\n`when`".log();
+  getDate(false).when(
+    success: (_) => "When [success]".log(),
+    failure: (_) => "Nothing happens".log(),
+  );
+  getDate(true).when(
+    success: (_) => "Nothing happens".log(),
+    failure: (_) => "When [failure]".log(),
+  );
 
   "\n`runCatching`".log();
   runCatching(() => DateTime.now()).log();

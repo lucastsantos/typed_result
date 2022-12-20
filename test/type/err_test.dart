@@ -20,7 +20,9 @@ void main() {
     test('two Err results with same values should generate same hashcode', () {
       expect(const Err(0).hashCode == const Err(0).hashCode, true);
     });
-    test('two Err results with different values should not generate same hashcode', () {
+    test(
+        'two Err results with different values should not generate same hashcode',
+        () {
       expect(const Err(0).hashCode == const Err(1).hashCode, false);
     });
   });

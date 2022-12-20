@@ -12,7 +12,7 @@ A `Result<T, E>` class can be either a success (`Ok<T>` class) or an error (`Err
 This package aims to provide convenience methods for:
 - Getting a value [(`get`, `getOr`, `getOrThrow`, `getError`, `getErrorOr` and `getErrorOrThrow`)][get]
 - Mapping a Result value into another Result [(`map`, `mapError` and `mapBoth`)][map]
-- Execute a block based on the result [(`onSuccess` and `onFailure`)][on]
+- Execute a block based on the result [(`onSuccess` and `onFailure`)][on], [(`when`)][when]
 - Wrap a block, transforming it's exception into error [(`runCatching`)][run-catching]
 - Wrap any value to a result based on the nullability [(`toResultOr`)][to-result]
 
@@ -45,5 +45,6 @@ The motivation for creating this package comes from using this library in Kotlin
 [get]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/get.dart
 [map]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/map.dart
 [on]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/on.dart
+[when]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/when.dart
 [run-catching]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/run_catching.dart
 [to-result]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/to_result.dart
