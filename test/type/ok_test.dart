@@ -20,7 +20,9 @@ void main() {
     test('two Ok results with same values should generate same hashcode', () {
       expect(const Ok(0).hashCode == const Ok(0).hashCode, true);
     });
-    test('two Ok results with different values should not generate same hashcode', () {
+    test(
+        'two Ok results with different values should not generate same hashcode',
+        () {
       expect(const Ok(0).hashCode == const Ok(1).hashCode, false);
     });
   });

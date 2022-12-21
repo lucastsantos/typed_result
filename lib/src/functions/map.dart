@@ -3,7 +3,7 @@ import '../type/ok.dart';
 import '../type/result.dart';
 
 extension MapResult<T, E> on Result<T, E> {
-  /// Map a [Result]<T, E> to a [Result]<U, E>
+  /// Map a [Result]<T, E> to a [Result]<U, E>.
   Result<U, E> map<U>(U Function(T value) transform) {
     var result = this;
     if (result is Ok<T>) {
@@ -13,7 +13,7 @@ extension MapResult<T, E> on Result<T, E> {
     }
   }
 
-  /// Map a [Result]<T, E> to a [Result]<T, F>
+  /// Map a [Result]<T, E> to a [Result]<T, F>.
   Result<T, F> mapError<F>(F Function(E error) transform) {
     var result = this;
     if (result is Err<E>) {
@@ -23,8 +23,10 @@ extension MapResult<T, E> on Result<T, E> {
     }
   }
 
-  /// Map a [Result]<T, E> to a [Result]<U, F>
-  Result<U, F> mapBoth<U, F>({required U Function(T value) success, required F Function(E error) failure}) {
+  /// Map a [Result]<T, E> to a [Result]<U, F>.
+  Result<U, F> mapBoth<U, F>(
+      {required U Function(T value) success,
+      required F Function(E error) failure}) {
     var result = this;
     if (result is Ok<T>) {
       return Ok<U>(success(result.value));

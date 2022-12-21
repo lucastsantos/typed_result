@@ -15,7 +15,9 @@ extension GetResult<T, E> on Result<T, E> {
 
   T getOrThrow() {
     var result = this;
-    return result is Ok<T> ? result.value : throw Exception("Tried to obtain value from a failure");
+    return result is Ok<T>
+        ? result.value
+        : throw Exception("Tried to obtain value from a failure");
   }
 
   E? getError() {
@@ -30,6 +32,8 @@ extension GetResult<T, E> on Result<T, E> {
 
   E getErrorOrThrow() {
     var result = this;
-    return result is Err<E> ? result.error : throw Exception("Tried to obtain error value from a success");
+    return result is Err<E>
+        ? result.error
+        : throw Exception("Tried to obtain error value from a success");
   }
 }
