@@ -9,3 +9,5 @@ export 'src/functions/when.dart';
 export 'src/type/err.dart';
 export 'src/type/ok.dart';
 export 'src/type/result.dart';
+export 'src/testing/result_value_equals.dart';
+export 'src/testing/result_error_equals.dart';
