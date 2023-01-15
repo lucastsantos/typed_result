@@ -6,14 +6,14 @@ void main() {
     test('should return success when it is a not-null value', () {
       String? value = "a";
       var result = value.toResultOr(() => 1);
-      expect(result.runtimeType, Ok<String>);
+      expect(result, isA<Ok<String>>());
       expect((result as Ok).value, "a");
     });
 
     test('should return failure when it is a null value', () {
       String? value;
       var result = value.toResultOr(() => 1);
-      expect(result.runtimeType, Err<int>);
+      expect(result, isA<Err<int>>());
       expect((result as Err).error, 1);
     });
   });

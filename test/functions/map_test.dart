@@ -5,13 +5,13 @@ void main() {
   group('map', () {
     test('should transform when it is success', () {
       var result = const Ok(1).map((e) => e.toString());
-      expect(result.runtimeType, Ok<String>);
+      expect(result, isA<Ok<String>>());
       expect((result as Ok).value, "1");
     });
 
     test('should preserve value when it is failure', () {
       var result = const Err('error').map((_) => 1);
-      expect(result.runtimeType, Err<String>);
+      expect(result, isA<Err<String>>());
       expect((result as Err).error, 'error');
     });
   });
@@ -19,13 +19,13 @@ void main() {
   group('mapError', () {
     test('should preserve value when it is success', () {
       var result = const Ok(1).mapError((e) => e.toString());
-      expect(result.runtimeType, Ok<int>);
+      expect(result, isA<Ok<int>>());
       expect((result as Ok).value, 1);
     });
 
     test('should transform when it is failure', () {
       var result = const Err('error').mapError((_) => 1);
-      expect(result.runtimeType, Err<int>);
+      expect(result, isA<Err<int>>());
       expect((result as Err).error, 1);
     });
   });
@@ -36,7 +36,7 @@ void main() {
         success: (e) => "a",
         failure: (e) => 0,
       );
-      expect(result.runtimeType, Ok<String>);
+      expect(result, isA<Ok<String>>());
       expect((result as Ok).value, "a");
     });
 
@@ -45,13 +45,13 @@ void main() {
         success: (e) => "a",
         failure: (e) => 0,
       );
-      expect(result.runtimeType, Err<int>);
+      expect(result, isA<Err<int>>());
       expect((result as Err).error, 0);
     });
   });
 
   test('Map extension name should not conflict with Dart Map', () {
     Result<Map<String, String>, Never> result = const Ok(0).map((value) => {});
-    expect(result.runtimeType, Ok<Map<String, String>>);
+    expect(result, isA<Ok<Map<String, String>>>());
   });
 }
