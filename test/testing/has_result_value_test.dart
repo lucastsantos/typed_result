@@ -7,7 +7,8 @@ void main() {
       expect(const Ok(1), HasResultValue(isA<int>()));
       expect(const Ok(1), HasResultValue(equals(1)));
       expect(const Ok(1), HasResultValue((e) => e + 1 == 2));
-      expect(const Ok("abc"), HasResultValue(allOf(equals("abc"), contains("a"), isNotEmpty)));
+      expect(const Ok("abc"),
+          HasResultValue(allOf(equals("abc"), contains("a"), isNotEmpty)));
     });
 
     test('should fail when matching with a failure result', () {
@@ -18,7 +19,8 @@ void main() {
         if (e is! TestFailure) {
           rethrow;
         } else {
-          expect(e.message, contains("is not a subtype of type \\\'Ok<dynamic>\\\'"));
+          expect(e.message,
+              contains("is not a subtype of type \\\'Ok<dynamic>\\\'"));
         }
       }
     });
@@ -31,7 +33,8 @@ void main() {
         if (e is! TestFailure) {
           rethrow;
         } else {
-          expect(e.message, contains("is not a subtype of type \\\'Ok<dynamic>\\\'"));
+          expect(e.message,
+              contains("is not a subtype of type \\\'Ok<dynamic>\\\'"));
         }
       }
     });
