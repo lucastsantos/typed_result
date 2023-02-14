@@ -1,3 +1,9 @@
+## 1.0.1
+
+- Added `and` and `andThen` function.
+- Downgraded Dart SDK requirement from `2.18.2` to `2.18.0`
+- Downgraded matcher dependency from `0.12.14` to `0.12.13`
+
 ## 1.0.0
 
 - Removed Flutter dependency.

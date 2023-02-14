@@ -1,13 +1,13 @@
 name: typed_result
 description: A result monad with two subtypes representing a success or a failure
 repository: https://github.com/lucastsantos/typed_result
-version: 1.0.0
+version: 1.0.1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
-  matcher: ^0.12.14
+  matcher: ^0.12.13
 
 dev_dependencies:
   test: any

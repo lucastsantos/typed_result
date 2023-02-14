@@ -15,6 +15,7 @@ This package aims to provide convenience methods for:
 - Execute a block based on the result [(`onSuccess` and `onFailure`)][on], [(`when`)][when]
 - Wrap a block, transforming it's exception into error [(`runCatching`)][run-catching]
 - Wrap any value to a result based on the nullability [(`toResultOr`)][to-result]
+- Testing results with custom [matchers][matchers]
 
 ## Usage
 An `Result<T, E>` can't be instantiated directly.
@@ -48,3 +49,4 @@ The motivation for creating this package comes from using this library in Kotlin
 [when]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/when.dart
 [run-catching]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/run_catching.dart
 [to-result]: https://github.com/lucastsantos/typed_result/blob/master/lib/src/functions/to_result.dart
+[matchers]: https://github.com/lucastsantos/typed_result/tree/master/lib/src/testing
