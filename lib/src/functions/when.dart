@@ -17,3 +17,13 @@ extension WhenResult<T, E> on Result<T, E> {
     return this;
   }
 }
+
+extension FutureWhenResult<T, E> on Future<Result<T, E>> {
+  /// Invokes [success] or [failure] block
+  /// depending if this result is a success or a failure.
+  Future<Result<T, E>> when(
+      {required void Function(T value) success,
+      required void Function(E error) failure}) {
+    return then((result) => result.when(success: success, failure: failure));
+  }
+}

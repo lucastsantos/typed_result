@@ -73,23 +73,20 @@ void getters() {
 void map() {
   print("\n`map`");
   print(ok.map((value) => "Mapping success at $value"));
-  print(err
-      .map((value) => "Nothing happens; still an instance of DateException"));
+  print(err.map(noop));
 
   print("\n`mapError`");
-  print(ok.mapError((_) => "Nothing happens; still an instance of DateTime"));
+  print(ok.mapError(noop));
   print(err.mapError((_) => "Mapping error"));
 
   print("\n`mapBoth`");
   print(ok.mapBoth(
-    success: (_) =>
-        "Mapping success with a failure alternative that was not called",
-    failure: (_) => "Nothing happens",
+    success: (_) => "Mapping a success value",
+    failure: noop,
   ));
   print(err.mapBoth(
-    success: (_) => "Nothing happens",
-    failure: (_) =>
-        "Mapping failure with a success alternative that was not called",
+    success: noop,
+    failure: (_) => "Mapping a failure value",
   ));
 }
 
@@ -98,9 +95,9 @@ void on() {
   print("\n`on`");
   ok
       .onSuccess((_) => print("onSuccess"))
-      .onFailure((_) => print("Nothing happens"));
+      .onFailure(noop);
   err
-      .onSuccess((_) => print("Nothing happens"))
+      .onSuccess(noop)
       .onFailure((_) => print("onFailure"));
 }
 
@@ -109,10 +106,10 @@ void when() {
   print("\n`when`");
   ok.when(
     success: (_) => print("When [success]"),
-    failure: (_) => print("Nothing happens"),
+    failure: noop,
   );
   err.when(
-    success: (_) => print("Nothing happens"),
+    success: noop,
     failure: (_) => print("When [failure]"),
   );
 }
@@ -131,7 +128,23 @@ void toResult() {
   print(null.toResultOr(() => DateException()));
 }
 
-void main() {
+/// Sample for showing extensions for handling with Future
+Future<void> future() async {
+  print("\n`Futures`");
+  final futureOk = Future.value(ok); // Future<Result<DateTime, DateException>>
+  final futureErr = Future.value(err); // Future<Result<DateTime, DateException>>
+
+  await futureOk.when(success: (value) => print("Future(ok).when(success): $value"), failure: noop);
+  await futureErr.when(success: noop, failure: (error) => print("Future(err).when(failure): $error"));
+
+  await futureOk.onSuccess((value) => print("Future(ok).onSuccess: $value"));
+  await futureErr.onSuccess(noop);
+
+  await futureOk.onFailure(print);
+  await futureErr.onFailure((error) => print("Future(err).onFailure: $error"));
+}
+
+void main() async {
   instances();
   getters();
   map();
@@ -139,4 +152,7 @@ void main() {
   when();
   catching();
   toResult();
+  await future();
 }
+
+void noop(dynamic param) => print("A stub method that is never called; Used for demonstration purposes");
