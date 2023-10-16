@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Added extensions for handling with Futures
+
 ## 1.0.1
 
 - Added `and` and `andThen` function.
