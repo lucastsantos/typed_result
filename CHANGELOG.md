@@ -1,6 +1,12 @@
+## 2.0.0
+
+- Breaking change: Raised minimum Dart to >=3.0.0
+- Added `partition` function.
+
 ## 1.0.2
 
 - Added extensions for handling with Futures
+- Raised maximum Dart constraint to <4.0.0
 
 ## 1.0.1
 

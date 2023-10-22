@@ -93,12 +93,8 @@ void map() {
 /// Sample for showing how to invoke block based on the Result outcome.
 void on() {
   print("\n`on`");
-  ok
-      .onSuccess((_) => print("onSuccess"))
-      .onFailure(noop);
-  err
-      .onSuccess(noop)
-      .onFailure((_) => print("onFailure"));
+  ok.onSuccess((_) => print("onSuccess")).onFailure(noop);
+  err.onSuccess(noop).onFailure((_) => print("onFailure"));
 }
 
 /// Sample for showing an alternative on how to invoke block based on the Result outcome.
