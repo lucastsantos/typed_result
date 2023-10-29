@@ -2,6 +2,7 @@ library typed_result;
 
 export 'src/functions/and.dart';
 export 'src/functions/get.dart';
+export 'src/functions/get_all.dart';
 export 'src/functions/map.dart';
 export 'src/functions/on.dart';
 export 'src/functions/partition.dart';

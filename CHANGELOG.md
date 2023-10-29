@@ -1,7 +1,7 @@
 ## 2.0.0
 
 - Breaking change: Raised minimum Dart to >=3.0.0
-- Added `partition` function.
+- Added `partition` and `getAll` methods for interacting with a list of results
 
 ## 1.0.2
 
