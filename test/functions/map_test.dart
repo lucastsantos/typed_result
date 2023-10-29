@@ -50,6 +50,25 @@ void main() {
     });
   });
 
+  group('toErrorIf', () {
+    test('should not transform success if does not satisfies the condition',
+        () {
+      final Result<int, String> result = const Ok(1);
+      expect(result.toErrorIf((_) => false, (_) => "error"), const Ok(1));
+    });
+
+    test('should transform success if satisfies the condition', () {
+      final Result<int, String> result = const Ok(1);
+      expect(result.toErrorIf((_) => true, (_) => "error"), const Err("error"));
+    });
+
+    test('should not transform failures', () {
+      final Result<int, String> result = const Err("original");
+      expect(result.toErrorIf((_) => true, (_) => "modified"),
+          const Err("original"));
+    });
+  });
+
   test('Map extension name should not conflict with Dart Map', () {
     Result<Map<String, String>, Never> result = const Ok(0).map((value) => {});
     expect(result, isA<Ok<Map<String, String>>>());
