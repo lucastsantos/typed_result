@@ -34,4 +34,22 @@ extension MapResult<T, E> on Result<T, E> {
       return Err<F>(failure((result as Err<E>).error));
     }
   }
+
+  /// Transforms a success into an error if it satisfies the given [predicate],
+  /// otherwise return this Result.
+  Result<T, E> toErrorIf(
+    bool Function(T value) predicate,
+    E Function(T value) transform,
+  ) {
+    final result = this;
+    if (result is Ok<T>) {
+      if (predicate(result.value)) {
+        return Err(transform(result.value));
+      } else {
+        return result;
+      }
+    } else {
+      return result;
+    }
+  }
 }

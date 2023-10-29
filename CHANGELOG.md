@@ -2,6 +2,7 @@
 
 - Breaking change: Raised minimum Dart to >=3.0.0
 - Added `partition`, `getAll` and `getAllErrors` for interacting with a list of results
+- Added `toErrorIf` method
 
 ## 1.0.2
 
